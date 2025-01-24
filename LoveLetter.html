@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Envelope Interaction</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background image -->
     <img src="valentine.gif" alt="Background" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+
+    <!-- Main content -->
     <div class="container">
         <div class="envelope-wrapper">
             <div class="envelope">
@@ -23,32 +26,35 @@
             <div class="heart"></div>
         </div>
     </div>
+
+    <!-- Background audio -->
     <audio id="background-audio" src="flol.mp3" loop muted style="display: none;"></audio>
+
     <script>
         const envelope = document.querySelector('.envelope-wrapper');
         const backgroundAudio = document.getElementById('background-audio');
         const letterAudio = document.getElementById('letter-audio');
 
-        // Ensure background audio starts when the user interacts
+        // Start background audio on user interaction
         document.addEventListener('click', () => {
             if (backgroundAudio.paused) {
                 backgroundAudio.play();
             }
         });
 
-        // Add event listener to the envelope
+        // Toggle envelope open/close behavior
         envelope.addEventListener('click', () => {
             envelope.classList.toggle('flap');
             if (envelope.classList.contains('flap')) {
-                // Envelope is opened: stop background music and play letter music
+                // Envelope opened: stop background audio and play letter audio
                 backgroundAudio.pause();
-                backgroundAudio.currentTime = 0; // Reset to the beginning
+                backgroundAudio.currentTime = 0;
                 letterAudio.play();
             } else {
-                // Envelope is closed: stop the letter music
+                // Envelope closed: stop letter audio and resume background audio
                 letterAudio.pause();
-                letterAudio.currentTime = 0; // Reset to the beginning
-                backgroundAudio.play(); // Resume background music
+                letterAudio.currentTime = 0;
+                backgroundAudio.play();
             }
         });
     </script>
