@@ -45,7 +45,7 @@ body{
     transition: all 0.5s ease-in-out 0.7s;
 }
 .envelope-wrapper > .envelope::after{
-    content: "Love Letter";
+    content: "";
     position: absolute;
     z-index:2;
     border-top: 130px solid transparent;
