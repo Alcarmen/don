@@ -34,7 +34,7 @@ body{
     height: 230px;
 }
 .envelope-wrapper > .envelope::before{
-    content: "";
+    content: "Love Letter";
     position: absolute;
     z-index:2;
     border-top: 130px solid var(--envelope-tab);
